@@ -1,0 +1,57 @@
+User model
+    User table (create)
+    column: username, unique
+    
+    Associations
+        has_many :authored_polls
+        has_many :responses  
+
+Poll model
+    Poll table (create)
+    
+    column: author_id, foreign key constraint  (specify it) 
+        #poll belongs to an author(user)
+        -create foreign key constraint
+    column: title
+
+    Associations
+        belongs to :author(user)
+        has_many :questions
+        
+
+Question model
+    Question table (create)
+    
+    column: poll_id, foreign key constraint
+        #question belongs to a poll
+    column: text
+
+    Associations: 
+        has_many :AnswerChoices
+        belongs to :poll
+        
+
+
+AnswerChoice model 
+    AnswerChoice table (create)
+    
+    column: question_id, foreign key constraint
+        -AnswerChoice belongs to a question
+    column: text
+
+
+    Associations: 
+        belongs_to :question
+        has_many :responses 
+
+Response model
+    Response table (create)
+    column: AnswerChoice_id, ()
+    column: user_id, foreign key constraint
+
+    Associations 
+        belongs_to :answer_choice,
+        belongs_to :respondent
+
+
+
